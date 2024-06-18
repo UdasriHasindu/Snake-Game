@@ -1,4 +1,5 @@
 from turtle import Turtle
+import random
 
 FORWARD_MOVES = 20
 UP = 90
@@ -6,7 +7,7 @@ DOWN = 270
 LEFT = 180
 RIGHT = 0
 
-
+# Creating Snake blocks 
 class Snake:
 
     def __init__(self):
@@ -58,4 +59,20 @@ class Snake:
             self.head.setheading(RIGHT)
 
 
+# Creating foods in random places 
+class Food(Turtle):
 
+    def __init__(self):
+        super().__init__()
+
+        self.shape("circle")
+        self.speed("fastest")
+        self.color("red")
+        self.penup()
+        self.shapesize(.5, .5)
+        self.refresh()
+
+    def refresh(self):
+        X_COORDINATES = random.randint(-380, 380)
+        Y_COORDINATES = random.randint(-330, 330)
+        self.setpos(X_COORDINATES, Y_COORDINATES)

@@ -1,5 +1,5 @@
 from turtle import Turtle, Screen
-from snake_classes import Snake
+from snake_classes import Snake, Food
 import time
 
 window = Screen()
@@ -9,6 +9,7 @@ window.title("SNAKE GAME")
 window.tracer(0)
 
 snake = Snake()
+ball = Food()
 
 
 window.listen()
@@ -24,6 +25,5 @@ while is_game_on:
     snake.move()
     window.update()
     time.sleep(.08)
-
 window.exitonclick()
 
