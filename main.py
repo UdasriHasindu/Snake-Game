@@ -1,14 +1,15 @@
 from turtle import Screen
-from snake_classes import Snake, Food, ScoreBoard
+from snake_classes import Snake, Wall, Food, ScoreBoard
 import time
 
 window = Screen()
-window.setup(width=800, height=700)
+window.setup(width=900, height=800)
 window.bgcolor("#161616")
 window.title("SNAKE GAME")
 window.tracer(0)
 
 snake = Snake()
+wall = Wall()
 ball = Food()
 scores = ScoreBoard()
 

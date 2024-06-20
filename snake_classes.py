@@ -59,6 +59,34 @@ class Snake:
             self.head.setheading(RIGHT)
 
 
+# Creating the wall around the window 
+MAX_WIDTH_X = 410
+MIN_WIDTH_X = -410
+MAX_HEIGHT_Y = 350
+MIN_HEIGHT_Y = -350
+
+class Wall(Turtle):
+
+    def __init__(self) :
+
+        super().__init__()
+
+        self.pencolor("white")
+        self.hideturtle()
+        self.pensize(10)
+        self.penup()
+        self.setpos(MIN_WIDTH_X, MAX_HEIGHT_Y)
+        self.create_wall()
+
+    def create_wall(self):
+
+        self.pendown()
+        self.goto(MAX_WIDTH_X, MAX_HEIGHT_Y)
+        self.goto(MAX_WIDTH_X, MIN_HEIGHT_Y)
+        self.goto(MIN_WIDTH_X, MIN_HEIGHT_Y)
+        self.goto(MIN_WIDTH_X, MAX_HEIGHT_Y)
+
+
 # Creating foods in random places 
 class Food(Turtle):
 
@@ -93,7 +121,7 @@ class ScoreBoard(Turtle):
         self.score = 0
         self.hideturtle()
         self.penup()
-        self.setpos(x=0, y=310)
+        self.setpos(x=0, y=360)
         self.color("white")
         self.count_score()
 
