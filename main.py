@@ -1,5 +1,6 @@
 from turtle import Screen
-from snake_classes import Snake, Food, ScoreBoard
+from snake_blocks import Snake
+from snake_classes import Food, ScoreBoard
 import time
 
 window = Screen()
