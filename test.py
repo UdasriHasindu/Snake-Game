@@ -1,7 +1,7 @@
 from turtle import Turtle, Screen
 
 window = Screen()
-window.setup(width=800, height=700)
+window.setup(width=900, height=800)
 window.bgcolor("#161616")
 window.title("SNAKE GAME")
 window.tracer(0)

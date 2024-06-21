@@ -2,11 +2,18 @@ from turtle import Screen
 from snake_classes import Snake, Wall, Food, ScoreBoard
 import time
 
+# Defining the game mode
+EASY = 0.5
+MEDIUM = 0.1
+HARD = 0.05
+
 window = Screen()
 window.setup(width=900, height=800)
 window.bgcolor("#161616")
 window.title("SNAKE GAME")
 window.tracer(0)
+game_mode = (window.textinput("Mode", "Easy , Medium or Hard [E / M / H]")).lower()
+print(game_mode)
 
 snake = Snake()
 wall = Wall()
@@ -21,12 +28,20 @@ window.onkey(snake.left, "Left")
 window.onkey(snake.right, "Right")
 
 
+
 is_game_on = True
 while is_game_on:
 
+    if (game_mode ==  'e') or (game_mode == 'easy'):
+        speed = EASY
+    elif (game_mode == 'm') or (game_mode == 'medium'):
+        speed = MEDIUM
+    elif( game_mode == 'h') or (game_mode == 'hard'):
+        speed = HARD
+
     snake.move()
     window.update()
-    time.sleep(.08)
+    time.sleep(speed)
 
 # detecting when snake eats food
     if snake.head.distance(ball) < 20:
