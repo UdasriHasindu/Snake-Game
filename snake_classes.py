@@ -2,12 +2,11 @@ from turtle import Turtle
 import random
 
 
-
 # Creating the wall around the window 
-MAX_WIDTH_X = 410
-MIN_WIDTH_X = -410
-MAX_HEIGHT_Y = 350
-MIN_HEIGHT_Y = -350
+MAX_WIDTH_X = 420
+MIN_WIDTH_X = -420
+MAX_HEIGHT_Y = 355
+MIN_HEIGHT_Y = -355
 
 class Wall(Turtle):
 
@@ -15,9 +14,9 @@ class Wall(Turtle):
 
         super().__init__()
 
-        self.pencolor("white")
+        self.pencolor("#973131")
         self.hideturtle()
-        self.pensize(10)
+        self.pensize(15)
         self.penup()
         self.setpos(MIN_WIDTH_X, MAX_HEIGHT_Y)
         self.create_wall()
@@ -39,7 +38,7 @@ class Food(Turtle):
 
         self.shape("circle")
         self.speed("fastest")
-        self.color("red")
+        self.color("#A7E6FF")
         self.penup()
         self.shapesize(.5, .5)
         self.refresh()
@@ -73,9 +72,16 @@ class ScoreBoard(Turtle):
         self.clear()
         self.write(f"Score = {self.score} ", align=TEXT_ALIGN, font=FONT)
         self.score += 1
+        # if game_mode == 'e' or game_mode == 'easy':
+        #     self.score += 1
+        # elif game_mode == 'm' or game_mode == 'medium':
+        #     self.score += 2
+        # elif game_mode == 'h' or game_mode == 'hard':
+        #     self.score += 3
+        
 
     def game_over(self):
-        self.setpos(0, 0)
-        self.write(f"Game Over", align=TEXT_ALIGN, font=FONT)
+        self.setpos(0, 300)
+        self.write(f"Oopss..Game Over", align=TEXT_ALIGN, font=FONT)
 
 

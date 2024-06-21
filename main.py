@@ -4,7 +4,7 @@ from snake_classes import Wall, Food, ScoreBoard
 import time
 
 # Defining the game mode
-EASY = 0.5
+EASY = 0.3
 MEDIUM = 0.1
 HARD = 0.05
 
@@ -53,7 +53,7 @@ def start_game():
             snake.expand()
 
         # detecting collision with wall
-        if snake.head.xcor() > 380 or snake.head.xcor() < -380 or snake.head.ycor() > 330 or snake.head.ycor() < -330:
+        if snake.head.xcor() > 380 or snake.head.xcor() < -380 or snake.head.ycor() > 320 or snake.head.ycor() < -320:
             is_game_on = False
             scores.game_over()
 
