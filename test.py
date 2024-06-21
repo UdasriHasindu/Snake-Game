@@ -1,44 +1,78 @@
-from turtle import Turtle, Screen
+from turtle import Screen
+from snake_classes import Snake, Wall, Food, ScoreBoard
+import time
 
-window = Screen()
-window.setup(width=900, height=800)
-window.bgcolor("#161616")
-window.title("SNAKE GAME")
-window.tracer(0)
-
-
-MAX_WIDTH_X = 400
-MIN_WIDTH_X = -400
-MAX_HEIGHT_Y = 350
-MIN_HEIGHT_Y = -350
-
-class Wall(Turtle):
-
-    def __init__(self) :
-
-        super().__init__()
-
-        self.pencolor("white")
-        self.hideturtle()
-        self.pensize(10)
-        self.penup()
-        self.setpos(MIN_WIDTH_X, MAX_HEIGHT_Y)
-        self.create_wall()
-
-    def create_wall(self):
-
-        self.pendown()
-        self.goto(MAX_WIDTH_X, MAX_HEIGHT_Y)
-        self.goto(MAX_WIDTH_X, MIN_HEIGHT_Y)
-        self.goto(MIN_WIDTH_X, MIN_HEIGHT_Y)
-        self.goto(MIN_WIDTH_X, MAX_HEIGHT_Y)
-
-        
-
-wall = Wall()
-wall.create_wall()
-window.update()
+# Defining the game mode
+EASY = 0.5
+MEDIUM = 0.1
+HARD = 0.05
 
 
+# main function 
+def start_game():
 
-window.mainloop()
+    # player screen 
+    window = Screen()
+    window.setup(width=900, height=800)
+    window.bgcolor("#161616")
+    window.title("SNAKE GAME")
+    window.tracer(0)
+
+    snake = Snake()
+    wall = Wall()
+    ball = Food()
+    scores = ScoreBoard()
+
+    game_mode = (window.textinput("Mode", "Easy , Medium or Hard [E / M / H]")).lower()
+
+    # make the snake head to listen the key commands 
+    window.listen()
+    window.onkey(snake.up, "Up")
+    window.onkey(snake.down, "Down")
+    window.onkey(snake.left, "Left")
+    window.onkey(snake.right, "Right")
+
+    is_game_on = True
+    while is_game_on:
+        if game_mode == 'e' or game_mode == 'easy':
+            speed = EASY
+        elif game_mode == 'm' or game_mode == 'medium':
+            speed = MEDIUM
+        elif game_mode == 'h' or game_mode == 'hard':
+            speed = HARD
+
+        snake.move()
+        window.update()
+        time.sleep(speed)
+
+        # detecting when snake eats food
+        if snake.head.distance(ball) < 20:
+            ball.refresh()
+            scores.count_score()
+            snake.expand()
+
+        # detecting collision with wall
+        if snake.head.xcor() > 380 or snake.head.xcor() < -380 or snake.head.ycor() > 330 or snake.head.ycor() < -330:
+            is_game_on = False
+            scores.game_over()
+
+        # detecting collision with itself
+        for block in snake.snake[1:]:
+            if block.distance(snake.head) < 10:
+                is_game_on = False
+                scores.game_over()
+
+    # option to play again 
+    def want_to_continue():
+        play_again = (window.textinput("Play Again", "Want to continue [Y/N]")).lower()
+        return play_again == 'y'
+
+    if want_to_continue():
+        window.clear()
+        start_game()
+    else:
+        window.exitonclick()
+
+
+
+start_game()
