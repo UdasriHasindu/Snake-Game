@@ -1,5 +1,6 @@
 from turtle import Screen
-from snake_classes import Snake, Wall, Food, ScoreBoard
+from snake_blocks import Snake
+from snake_classes import Wall, Food, ScoreBoard
 import time
 
 # Defining the game mode
