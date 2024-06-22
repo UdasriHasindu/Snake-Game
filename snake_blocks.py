@@ -7,7 +7,8 @@ LEFT = 180
 RIGHT = 0
 
 # Colors for snake decoration
-SNAKE_COLORS = ["#76B041", "#77D353", "#98FB98"]  
+SNAKE_COLORS = ["#597445", "#729762"]
+
 
 # Creating Snake blocks 
 class Snake:
@@ -18,7 +19,7 @@ class Snake:
         self.head = self.snake[0]
         self.left_eye = self.create_eye((-5, 5))
         self.right_eye = self.create_eye((5, 5))
-        self.mouth = self.create_mouth((0,0))
+        self.mouth = self.create_mouth((0, 0))
 
     def create_snake(self):
         for i in range(3):
@@ -34,7 +35,7 @@ class Snake:
         eye = Turtle()
         eye.penup()
         eye.shape("circle")
-        eye.color("black")
+        eye.color("#0C1844")
         eye.shapesize(0.2, 0.2)  
         eye.setpos(self.head.xcor() + position[0], self.head.ycor() + position[1])
         return eye
@@ -48,13 +49,13 @@ class Snake:
         mouth = Turtle()
         mouth.penup()
         mouth.shape("circle")
-        mouth.color("red")
+        mouth.color("#973131")
         mouth.shapesize(0.2, 0.5)  
         mouth.setpos(self.head.xcor() + position[0], self.head.ycor() + position[1])
         return mouth
 
     def update_mouth_position(self):
-        self.mouth.setpos(self.head.xcor() , self.head.ycor() - 4)
+        self.mouth.setpos(self.head.xcor(), self.head.ycor() - 4)
 
     # expand the snake 
     def expand(self):

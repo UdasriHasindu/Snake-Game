@@ -8,10 +8,11 @@ EASY = 0.3
 MEDIUM = 0.1
 HARD = 0.05
 
+
 # main function 
 def start_game():
 
-    # player screen 
+    # player screen
     window = Screen()
     window.setup(width=900, height=800)
     window.bgcolor("#161616")
@@ -33,6 +34,7 @@ def start_game():
     window.onkey(snake.right, "Right")
 
     is_game_on = True
+    global speed
     while is_game_on:
         if game_mode == 'e' or game_mode == 'easy':
             speed = EASY
@@ -41,6 +43,7 @@ def start_game():
         elif game_mode == 'h' or game_mode == 'hard':
             speed = HARD
 
+        wall.create_wall()
         snake.move()
         window.update()
         time.sleep(speed)

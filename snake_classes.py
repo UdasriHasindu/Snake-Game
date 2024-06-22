@@ -2,10 +2,11 @@ from turtle import Turtle
 import random
 
 # Creating the wall around the window 
-MAX_WIDTH_X = 420
-MIN_WIDTH_X = -420
+MAX_WIDTH_X = 415
+MIN_WIDTH_X = -415
 MAX_HEIGHT_Y = 355
 MIN_HEIGHT_Y = -355
+
 
 class Wall(Turtle):
 
@@ -44,10 +45,10 @@ class Food(Turtle):
         self.setpos(X_COORDINATES, Y_COORDINATES)
 
 
-#creating Score bord
-
+# Creating Score bord
 FONT = ('Courier', 18, 'normal')
 TEXT_ALIGN = 'center'
+
 
 class ScoreBoard(Turtle):
 
