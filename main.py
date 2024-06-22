@@ -8,7 +8,6 @@ EASY = 0.3
 MEDIUM = 0.1
 HARD = 0.05
 
-
 # main function 
 def start_game():
 
@@ -49,7 +48,7 @@ def start_game():
         # detecting when snake eats food
         if snake.head.distance(ball) < 20:
             ball.refresh()
-            scores.count_score()
+            scores.count_score(game_mode)
             snake.expand()
 
         # detecting collision with wall
@@ -73,7 +72,6 @@ def start_game():
         start_game()
     else:
         window.exitonclick()
-
 
 
 start_game()
