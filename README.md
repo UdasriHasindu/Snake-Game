@@ -11,10 +11,8 @@
 
 ### Additionals
 
-*Recommended OS - Windows*
-
-*Recommended IDEs - VS code, Pycharm*
-
-*If you're using linux or ubuntu as your OS please check Tkinter is installed*
+- *Recommended OS - Windows*
+- *Recommended IDEs - VS code, Pycharm*
+- ***If you're using linux or ubuntu as your OS please check Tkinter is installed***
    
 
