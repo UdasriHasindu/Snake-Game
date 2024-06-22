@@ -6,6 +6,9 @@ DOWN = 270
 LEFT = 180
 RIGHT = 0
 
+# Colors for snake decoration
+SNAKE_COLORS = ["#76B041", "#77D353", "#98FB98"]  # Example gradient colors
+
 # Creating Snake blocks 
 class Snake:
 
@@ -19,7 +22,7 @@ class Snake:
             blocks = Turtle()
             blocks.penup()
             blocks.shape("square")
-            blocks.color("white")
+            blocks.color(SNAKE_COLORS[i % len(SNAKE_COLORS)])
             blocks.setpos(x=-(i * 20), y=0)
             self.snake.append(blocks)
 
@@ -27,7 +30,7 @@ class Snake:
         blocks = Turtle()
         blocks.penup()
         blocks.shape("square")
-        blocks.color("white")
+        blocks.color(SNAKE_COLORS[len(self.snake) % len(SNAKE_COLORS)])
         blocks.setpos(self.snake[-1].position())
         self.snake.append(blocks)
 
@@ -39,7 +42,6 @@ class Snake:
             self.snake[block].setpos(x=new_x, y=new_y)
 
         self.head.forward(FORWARD_MOVES)
-
 
     def up(self):
         if self.head.heading() != DOWN:
