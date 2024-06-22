@@ -16,6 +16,8 @@ class Snake:
         self.snake = []
         self.create_snake()
         self.head = self.snake[0]
+        self.left_eye = self.create_eye((-5, 5))
+        self.right_eye = self.create_eye((5, 5))
 
     def create_snake(self):
         for i in range(3):
@@ -25,6 +27,19 @@ class Snake:
             blocks.color(SNAKE_COLORS[i % len(SNAKE_COLORS)])
             blocks.setpos(x=-(i * 20), y=0)
             self.snake.append(blocks)
+
+    def create_eye(self, position):
+        eye = Turtle()
+        eye.penup()
+        eye.shape("circle")
+        eye.color("white")
+        eye.shapesize(0.2, 0.2)  # Adjust the size as needed
+        eye.setpos(self.head.xcor() + position[0], self.head.ycor() + position[1])
+        return eye
+
+    def update_eyes_position(self):
+        self.left_eye.setpos(self.head.xcor() - 5, self.head.ycor() + 5)
+        self.right_eye.setpos(self.head.xcor() + 5, self.head.ycor() + 5)
 
     def expand(self):
         blocks = Turtle()
@@ -42,6 +57,7 @@ class Snake:
             self.snake[block].setpos(x=new_x, y=new_y)
 
         self.head.forward(FORWARD_MOVES)
+        self.update_eyes_position()
 
     def up(self):
         if self.head.heading() != DOWN:
