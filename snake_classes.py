@@ -12,7 +12,7 @@ class Wall(Turtle):
 
     def __init__(self):
         super().__init__()
-        self.pencolor("#973131")
+        self.pencolor("#B31312")
         self.hideturtle()
         self.pensize(15)
         self.penup()
@@ -34,7 +34,7 @@ class Food(Turtle):
         super().__init__()
         self.shape("circle")
         self.speed("fastest")
-        self.color("#A7E6FF")
+        self.color("#FFD700")
         self.penup()
         self.shapesize(.5, .5)
         self.refresh()

@@ -7,7 +7,7 @@ LEFT = 180
 RIGHT = 0
 
 # Colors for snake decoration
-SNAKE_COLORS = ["#597445", "#729762"]
+SNAKE_COLORS = ["#6B8E23", "#8FBC8F"]
 
 
 # Creating Snake blocks 
@@ -35,7 +35,7 @@ class Snake:
         eye = Turtle()
         eye.penup()
         eye.shape("circle")
-        eye.color("#0C1844")
+        eye.color("#071952")
         eye.shapesize(0.2, 0.2)  
         eye.setpos(self.head.xcor() + position[0], self.head.ycor() + position[1])
         return eye

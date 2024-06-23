@@ -15,7 +15,7 @@ def start_game():
     # player screen
     window = Screen()
     window.setup(width=900, height=800)
-    window.bgcolor("#161616")
+    window.bgcolor("#1A1A1D")
     window.title("SNAKE GAME")
     window.tracer(0)
 
@@ -73,8 +73,8 @@ def start_game():
     if want_to_continue():
         window.clear()
         start_game()
-    else:
-        window.exitonclick()
+    # else:
+    #     window.exitonclick()
 
 
 start_game()
